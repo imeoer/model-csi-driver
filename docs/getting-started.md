@@ -48,7 +48,7 @@ config:
 
 3. Install the driver using Helm:
 ```bash
-helm install model-csi-driver ./charts/model-csi-driver \
+helm upgrade --install model-csi-driver ./charts/model-csi-driver \
     --namespace model-csi \
     --create-namespace \
     -f values-custom.yaml
@@ -60,6 +60,10 @@ kubectl get pods -n model-csi
 ```
 
 ## Basic Usage
+
+### Create model artifact with modctl
+
+Follow [guide](https://github.com/modelpack/modctl/blob/main/docs/getting-started.md) to build and push a model artifact to an OCI distribution-compatible registry.
 
 ### Create a Pod with Model Volume
 
@@ -84,7 +88,7 @@ spec:
     csi:
       driver: model.csi.modelpack.org
       volumeAttributes:
-        modelRef: "registry.example.com/models/bert-base:latest"
+        modelRef: "registry.example.com/models/qwen3-0.6b:latest"
 ```
 
 ## Troubleshooting

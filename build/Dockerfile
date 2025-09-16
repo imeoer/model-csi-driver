@@ -1,9 +1,8 @@
 FROM golang:1.24 AS builder
 WORKDIR /app
-
 COPY . .
-RUN --mount=type=cache,target=$HOME/.cache/go-build \
-  --mount=type=cache,target=$HOME/go/pkg/mod \
+RUN --mount=type=cache,target=/go/pkg/mod \
+  --mount=type=cache,target=/root/.cache/go-build \
   make release
 
 FROM ubuntu:24.04
