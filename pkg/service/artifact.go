@@ -25,6 +25,7 @@ type artifactResponse struct {
 	Precision    string                  `json:"precision"`
 	Quantization string                  `json:"quantization"`
 	Layers       []artifactLayerResponse `json:"layers"`
+	Test         string                  `json:"test,omitempty"`
 }
 
 type artifactLayerResponse struct {
@@ -59,6 +60,7 @@ func newArtifactResponse(artifact *backend.InspectedModelArtifact) *artifactResp
 		Precision:    artifact.Precision,
 		Quantization: artifact.Quantization,
 		Layers:       make([]artifactLayerResponse, 0, len(artifact.Layers)),
+		Test:         "xxx",
 	}
 
 	for _, layer := range artifact.Layers {
