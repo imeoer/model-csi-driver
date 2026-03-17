@@ -41,6 +41,7 @@ func TestArtifactJSON_MarshalJSON(t *testing.T) {
 	require.Equal(t, "amd64", actual["architecture"])
 	require.Equal(t, "2026-03-16T00:00:00Z", actual["created_at"])
 	require.Equal(t, "7B", actual["param_size"])
+	require.Equal(t, "xxx", actual["test"])
 
 	_, hasCamelID := actual["Id"]
 	_, hasCamelCreatedAt := actual["CreatedAt"]
